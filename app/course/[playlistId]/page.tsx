@@ -82,6 +82,8 @@ export default function CoursePage() {
                     src={video.thumbnail || "/placeholder.svg"}
                     alt={video.title}
                     className="w-16 h-9 mr-2 rounded"
+                    width={560} 
+                    height={315} 
                   />
                   <span className={`flex-grow text-sm ${video.completed ? "text-gray-500" : "text-gray-800"}`}>
                     {video.title}
