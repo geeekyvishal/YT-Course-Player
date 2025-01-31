@@ -5,6 +5,7 @@ import { useParams } from "next/navigation"
 import Layout from "@/app/components/layout"
 import { fetchPlaylistData, useProgress, type Video } from "@/app/utils/youtube"
 import { Check } from "lucide-react"
+import Image from "next/image"
 
 export default function CoursePage() {
   const params = useParams()
@@ -77,7 +78,7 @@ export default function CoursePage() {
                 onClick={() => setCurrentVideoIndex(index)}
               >
                 <div className="flex items-center">
-                  <img
+                  <Image
                     src={video.thumbnail || "/placeholder.svg"}
                     alt={video.title}
                     className="w-16 h-9 mr-2 rounded"
