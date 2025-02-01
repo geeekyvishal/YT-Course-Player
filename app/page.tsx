@@ -3,6 +3,10 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Layout from "./components/layout"
+import { Input } from "@/app/components/ui/input"
+import { Button } from "@/app/components/ui/button"
+import { Youtube } from "lucide-react"
+import Image from "next/image"
 
 export default function Home() {
   const [playlistUrl, setPlaylistUrl] = useState("")
@@ -20,29 +24,36 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="max-w-md mx-auto">
-        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="playlist-url">
-              YouTube Playlist URL
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="playlist-url"
-              type="url"
-              placeholder="https://www.youtube.com/playlist?list=..."
-              value={playlistUrl}
-              onChange={(e) => setPlaylistUrl(e.target.value)}
-              required
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-12rem)]">
+        <div className="text-center mb-12">
+          <Image
+            src="/logo.png"
+            alt="EduTube Logo"
+            width={120}
+            height={120}
+            className="mx-auto mb-8 dark:brightness-200"
+            priority
+          />
+          <h1 className="text-4xl font-bold mb-4">Welcome to EduTube</h1>
+          <p className="text-xl text-muted-foreground">
+          Transform YouTube playlists into structured courses with an ad-free, focused learning environment.
+          </p>
+        </div>
+        <form onSubmit={handleSubmit} className="w-full max-w-md">
+          <div className="flex flex-col space-y-4">
+            <div className="relative">
+              <Youtube className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+              <Input
+                className="pl-10"
+                placeholder="Enter YouTube playlist URL"
+                value={playlistUrl}
+                onChange={(e) => setPlaylistUrl(e.target.value)}
+                required
+              />
+            </div>
+            <Button type="submit" className="w-full">
               Start Learning
-            </button>
+            </Button>
           </div>
         </form>
       </div>
